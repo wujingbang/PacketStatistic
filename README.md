@@ -6,7 +6,7 @@ A tool to statistic packets from network stack of linux
 
 # libpcap库的交叉编译
  1. ./configure --host=<交叉编译器前缀> --prefix=<交叉编译器目录>/lib/gcc/...../4.x.x  此为安装路径
-     * 例：./configure --host=arm-none-linux-gnueabi
+     * 例：./configure --host=arm-none-linux-gnueabi --prefix=<交叉编译器目录>/lib/gcc/...../4.x.x
  2. make
  3. make install
  3. 将生成的libpcap.a文件拷贝到 <交叉编译器目录>/lib/gcc/...../4.x.x/ 目录下
