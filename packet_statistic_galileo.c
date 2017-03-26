@@ -43,7 +43,7 @@ void getPacket(u_char * arg, const struct pcap_pkthdr * pkthdr, const u_char * p
 
   
 	long sectime = pkthdr->ts.tv_sec - starttime;
-	long mstime = sectime * 100 + (pkthdr->ts.tv_usec / 100000);
+	long mstime = sectime * 10 + (pkthdr->ts.tv_usec / 100000);
 	stat_data_persec[sectime] += pkthdr->len;
 	stat_data_per100ms[mstime] += pkthdr->len;
 	return;
@@ -71,7 +71,7 @@ int main(int argc,char *argv[])
   struct timeval tv; 
   char errBuf[PCAP_ERRBUF_SIZE], * devStr;
   /* open a device, wait until a packet arrives */
-  pcap_t * device = pcap_open_live(DEV, ETH_HDR+TCP_HDR+IP_HDR+BUNDLE_HDR+20, 0, 0, errBuf);
+  pcap_t * device = pcap_open_live(DEV, ETH_HDR+TCP_HDR+IP_HDR+20, 0, 0, errBuf);
 
   if(!device)
   {
